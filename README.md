@@ -14,4 +14,4 @@ primary physician.
 
 # Launching Server
 In a terminal window, navigate to the Client-Central directory.
-Type node server.js. and open http://localhost:8080 in a browser window.
+Type `node server.js` and open http://localhost:8080 in a browser window.
