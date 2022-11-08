@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Appointment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body >
+   <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand text-capitalize" href="#">Doctor's Appointment</a>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+           <li class="nav-item">
+          <a class="nav-link" th:href="@{/userDetails}"> <i class=" mr-1" aria-hidden="true"></i>Home</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" th:href="@{/userDetails}"> <i class=" mr-1" aria-hidden="true"></i>Appointments</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" th:href="@{/}"> <i class=" mr-1" aria-hidden="true"></i>Logout</a>
+        </li>
+          </ul>
+        </div>
+      </nav>
+   </header> 
+   <section class="container.fluid pt-3">
+    <table class="table-bordered table-striped table-condensed cf" style="width:100%; margin-top:2px; font-size:14px;">
+<thead class="cf" style="width:100%"> <tr> <th style="background-color:#1DA1F2; color:#FFF;"><strong>Patient's EmailID</strong></th> <th style="background-color:#1DA1F2; color:#FFF;"><strong>Name</strong></th> <th style="background-color:#1DA1F2; color:#FFF;"><strong>Set appointment</strong></th>  </tr> </thead>
+<tbody>
+
+<tr valign="top" th:each="patient:${patient}">
+<form method="POST" th:action="@{/assignment}">
+<td valign="top" th:text="${patient.email}"type="text">Email</td>
+<td valign="top" th:text="${patient.name}">Name</td>
+
+<td>
+
+	<input type="hidden" name="email" th:value="${email}">
+	
+	<input type="hidden" name="email" th:value="${patient.email}">
+	<input type="hidden" name="name" th:value="${patient.name}">
+	<input type="date" id="calender" name="date">
+    <input type="time" id="slot" name="slot">
+    <button type="submit" value="value" class="link-button">Book Appointment</button>
+</td>
+</form>
+</tr>
+
+</tbody>
+</table>
+   </section>
+   <footer>
+   </footer>
+
+</body>
+</html>
