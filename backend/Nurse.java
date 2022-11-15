@@ -1,4 +1,4 @@
-public class Nurse implements User {
+public class Nurse {
     String username;
     String email;
     String password;
