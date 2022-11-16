@@ -9,6 +9,7 @@ public class Patient {
     double height;
     double weight;
     boolean currentPatient;
+    boolean isInsured;
     String familyHistory;
 
     /**
@@ -24,6 +25,7 @@ public class Patient {
         this.height = 0;
         this.weight = 0;
         this.currentPatient = false;
+        this.isInsured = false;
         this.familyHistory = null;
     }
 
@@ -41,7 +43,7 @@ public class Patient {
      * @param familyHistory any important details regarding health history in the family: String
      */
     public Patient(String username, String email, String password, String name, String dateOfBirth, int age,
-                   double height, double weight, boolean currentPatient, String familyHistory) {
+                   double height, double weight, boolean currentPatient, boolean isInsured, String familyHistory) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -51,6 +53,7 @@ public class Patient {
         this.height = height;
         this.weight = weight;
         this.currentPatient = currentPatient;
+        this.isInsured = isInsured;
         this.familyHistory = familyHistory;
     }
 
