@@ -7,16 +7,26 @@ let con = mysql.createConnection({
     database: "ClientCentral"
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
+// con.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Connected!");
+// });
 
-    let insert = "INSERT INTO PATIENT (PATNUMBER, PATNAME, PATBIRTHDATE, HEIGHT, WEIGHT, CURRENT, PROVIDER, SYMPTOMS, ALLERGIES, HISTORY) " +
-        "VALUES (1315, 'Test Patient', '01012005', 64, 178, true, 'Example Provider', 'Vomiting, etc.', 'None', 'Family history of heart failure.')";
-    let query = "SELECT * FROM PATIENT";
 
-    con.query(query, function (err, result) {
+// let query = "SELECT * FROM PATIENT";
+
+// this function is passed strings holding patient attributes which are inserted into the DB
+function insertPatientData(patnum, patname, patDOB, pathgt, patwgt, current, provider, symptom, allergy, history) {
+    con.connect(function(err) {
         if(err) throw err;
-        console.log("Result: " + result);
+        console.log("Connected!");
+
+        let sql = "INSERT INTO PATIENT (PATNUMBER, PATNAME, PATBIRTHDATE, HEIGHT, WEIGHT, CURRENT, PROVIDER, SYMPTOMS, ALLERGIES, HISTORY) " +
+        `VALUES ('${patnum}', '${patname}', '${patDOB}', '${pathgt}', '${patwgt}', '${current}', '${provider}', '${symptom}', '${allergy}', '${history}')`;
+
+        con.query(sql, function (err, result) {
+            if(err) throw err;
+            console.log("Result: " + result);
+        });
     });
-});
+}
