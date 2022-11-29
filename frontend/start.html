@@ -5,6 +5,7 @@
 	<title>Welcome!</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="my-login.css">
+	<link rel="stylesheet" type="text/css" href="welcome.css">
 </head>
 
 <body class="my-login-page">
@@ -16,14 +17,25 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Welcome to Central Client</h4>
+							<h5><center> 
+								Begin by selecting your log in choice:
+							</center> 
+							</h5>
 						</div>
-						<div>
+						<div id="HASH">
 							<a th:href="@{/patlog}" class="btn btn-primary">Patient</a>
 							<a th:href="@{/doclog}" class="btn btn-primary">Doctor</a>
 						</div>
 					</div>
 					<div class="footer">
-						Client Central -- Pennsylvania State University 2022
+						<h4>
+						<br>Client Central -- Pennsylvania State University 2022 <br>
+					    </h4>
+						<h5>
+							<center> Authors: <br>
+								Owen Powell, Jennifer Lewis, Andrew Kuziel, Jordan Sharkey
+							</center>
+						</h5>
 					</div>
 				</div>
 			</div>
