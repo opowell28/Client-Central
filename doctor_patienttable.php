@@ -94,8 +94,8 @@ $stmt->close();
 				<li class="nav-item">
 					<a href="doctor_home.php" class="nav-link">Home</a>
 				</li>
-				<li class="nav-item active">
-					<a href="#" class="nav-link"></i>Account</a>
+				<li class="nav-item">
+					<a href="doctor_account.php" class="nav-link"></i>Account</a>
 				</li>
 				<li class="nav-item">
 					<a href="doctor_booking.php" class="nav-link"></i>Booking</a>
