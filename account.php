@@ -13,8 +13,8 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$stmt = $con->prepare('SELECT password, email FROM accounts WHERE id = ?');
-$stmt->bind_param('i', $_SESSION['id']);
+$stmt = $con->prepare('SELECT password, email FROM patient_accounts WHERE patient_id = ?');
+$stmt->bind_param('i', $_SESSION['patient_id']);
 $stmt->execute();
 $stmt->bind_result($password, $email);
 $stmt->fetch();
@@ -109,7 +109,7 @@ $stmt->close();
 							<td><?=$currentuser?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Password:EXAMPLE</td>
+							<td>Password:</td>
 							<td>********</td>
 						</tr>
 						<tr class="table-primary">

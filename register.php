@@ -30,7 +30,11 @@ if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 	exit('Password must be between 5 and 20 characters long!');
 }
-if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+
+
+
+
+if ($stmt = $con->prepare('SELECT patient_id, password FROM patient_accounts WHERE username = ?')) {
 	// Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
 	$stmt->bind_param('s', $_POST['username']);
 	$stmt->execute();
@@ -41,7 +45,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 		header('Location: register - failed.html');
 	} else {
     // Username doesnt exists, insert new account
-if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
+if ($stmt = $con->prepare('INSERT INTO patient_accounts (username, password, email) VALUES (?, ?, ?)')) {
 	// We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
 	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);

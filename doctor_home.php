@@ -1,24 +1,11 @@
 <?php
+// We need to use sessions, so you should always start sessions using the below code.
 session_start();
-
+// If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'phplogin';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
-$stmt = $con->prepare('SELECT password, email FROM patient_accounts WHERE patient_id = ?');
-$stmt->bind_param('i', $_SESSION['patient_id']);
-$stmt->execute();
-$stmt->bind_result($password, $email);
-$stmt->fetch();
-$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +13,7 @@ $stmt->close();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ClientCentral - Appointments</title>
+	<title>ClientCentral - Home</title>
 	<link rel="icon" type="image/png" href="img/favicon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -43,20 +30,20 @@ $stmt->close();
 <!-- Navigation-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark-register fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="index - user.html"><img src="img/logo light.png" height="80rem"></a>
+		<a class="navbar-brand" href="doctor_index - user.html"><img src="img/logo light.png" height="80rem"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="nav navbar-nav ml-auto">
-				<li class="nav-item">
-					<a href="home.php" class="nav-link">Home</a>
-				</li>
-				<li class="nav-item">
-					<a href="account.php" class="nav-link"></i>Account</a>
-				</li>
 				<li class="nav-item active">
-					<a href="#" class="nav-link"></i>Booking</a>
+					<a href="#" class="nav-link">Home</a>
+				</li>
+				<li class="nav-item">
+					<a href="doctor_account.php" class="nav-link"></i>Account</a>
+				</li>
+				<li class="nav-item">
+					<a href="doctor_booking.php" class="nav-link"></i>Booking</a>
 				</li>
 				<li class="nav-item">
 					<a href="logout.php" class="nav-link">Logout <i class="fas fa-sign-out-alt"></i></a>
@@ -86,60 +73,29 @@ $stmt->close();
 <!--- Welcome Section -->
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
-    <div class="col-12 justify-content-center">
-			<form action="book.php" method="post" class="form" >
-				<div class="row">
-					<div class="col">
-						<div class="row">
-							<div class="col">
-								<div class="form-group">
-									<label>Username</label>
-									<input type="text" class="form-control" name="username" id="username" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" readonly>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<div class="form-group">
-									<label>Doctor Name</label>
-									<input class="form-control" type="text" name="docname" id="docname" placeholder="Doctor Name" required>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col">
-								<div class="form-group">
-									<label>Appointment Date</label>
-									<input class="form-control" type="text" name="adate" id="adate" placeholder="Appointment Date" required/>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-group">
-									<label>Appointment Time</label>
-									<input class="form-control" type="text" name="atime" id="atime" placeholder="Appointment Time" required>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col mb-3">
-								<div class="form-group">
-									<label>Symptoms</label>
-									<textarea class="form-control" rows="5" placeholder="Description your symptoms" name="symptoms" id="symptoms" required></textarea>
-								</div>
-							</div>
-						</div>
-
+		<div class="col-12">
+      <h2 class="display-4">Home Page</h2>
+      <p class="lead">Welcome back, <?=$_SESSION['name']?>!</p>
+			<hr>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-lg-6 col-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title display-4">Account</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col d-flex justify-content-end">
-						<button class="btn btn-primary" value="value" type="submit">Book Appointment</button>
+			</div>
+      <div class="col-lg-6 col-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title display-4">Scheduling</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 				</div>
-			</form>
-    </div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -169,8 +125,6 @@ $stmt->close();
 		</div>
 	</div>
 </footer>
-
-</div>
 
 </body>
 </html>

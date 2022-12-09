@@ -13,8 +13,8 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$stmt = $con->prepare('SELECT password, email FROM patient_accounts WHERE patient_id = ?');
-$stmt->bind_param('i', $_SESSION['patient_id']);
+$stmt = $con->prepare('SELECT password, email FROM doctor_accounts WHERE doctor_id = ?');
+$stmt->bind_param('i', $_SESSION['doctor_id']);
 $stmt->execute();
 $stmt->bind_result($password, $email);
 $stmt->fetch();
@@ -43,17 +43,17 @@ $stmt->close();
 <!-- Navigation-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark-register fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="index - user.html"><img src="img/logo light.png" height="80rem"></a>
+		<a class="navbar-brand" href="doctor_index - user.html"><img src="img/logo light.png" height="80rem"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="nav navbar-nav ml-auto">
 				<li class="nav-item">
-					<a href="home.php" class="nav-link">Home</a>
+					<a href="doctor_home.php" class="nav-link">Home</a>
 				</li>
 				<li class="nav-item">
-					<a href="account.php" class="nav-link"></i>Account</a>
+					<a href="doctor_account.php" class="nav-link"></i>Account</a>
 				</li>
 				<li class="nav-item active">
 					<a href="#" class="nav-link"></i>Booking</a>
@@ -87,14 +87,14 @@ $stmt->close();
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
-			<form action="book.php" method="post" class="form" >
+			<form action="doctor_book.php" method="post" class="form" >
 				<div class="row">
 					<div class="col">
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
 									<label>Username</label>
-									<input type="text" class="form-control" name="username" id="username" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" readonly>
+									<input type="text" class="form-control" name="username" id="username" placeholder="Patient Username" required>
 								</div>
 							</div>
 						</div>
@@ -102,7 +102,7 @@ $stmt->close();
 							<div class="col">
 								<div class="form-group">
 									<label>Doctor Name</label>
-									<input class="form-control" type="text" name="docname" id="docname" placeholder="Doctor Name" required>
+									<input type="text" class="form-control" name="docname" id="docname" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" >
 								</div>
 							</div>
 						</div>
@@ -125,8 +125,8 @@ $stmt->close();
 						<div class="row">
 							<div class="col mb-3">
 								<div class="form-group">
-									<label>Symptoms</label>
-									<textarea class="form-control" rows="5" placeholder="Description your symptoms" name="symptoms" id="symptoms" required></textarea>
+									<label>Reason</label>
+									<textarea class="form-control" rows="5" placeholder="Reason for appointment" name="symptoms" id="symptoms" required></textarea>
 								</div>
 							</div>
 						</div>
@@ -138,6 +138,7 @@ $stmt->close();
 						<button class="btn btn-primary" value="value" type="submit">Book Appointment</button>
 					</div>
 				</div>
+				<p class="text-success" >Appointment Booked Successfully!</p>
 			</form>
     </div>
 	</div>

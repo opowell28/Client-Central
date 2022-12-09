@@ -87,7 +87,7 @@ $stmt->close();
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
-			<form action="book.php" method="post" class="form" >
+			<form action="doctor_book.php" method="post" class="form" >
 				<div class="row">
 					<div class="col">
 						<div class="row">
@@ -138,6 +138,7 @@ $stmt->close();
 						<button class="btn btn-primary" value="value" type="submit">Book Appointment</button>
 					</div>
 				</div>
+				<p class="text-success" >Appointment Booked Successfully!</p>
 			</form>
     </div>
 	</div>

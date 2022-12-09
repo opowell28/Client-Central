@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ClientCentral - Login</title>
+	<title>Bootstrap 4 Practice</title>
 	<link rel="icon" type="image/png" href="img/favicon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -50,7 +50,7 @@
             <h5 class="display-4">Login</h5>
           </div>
           <div class="card-body">
-						<form action="authenticate.php" method="post">
+						<form action="doctor_authenticate.php" method="post">
 							<div class="form-group">
 								<input type="text" class="form-control" name="username" placeholder="Username" id="username" required>
 							</div>
@@ -58,8 +58,9 @@
 								<input type="password" class="form-control" name="password" placeholder="Password" id="password" required>
 							</div>
               <button type="submit" class="btn btn-primary">Login</button>
+							<p class="text-danger" style="font-size: 60%">Incorrect username or password, please try again.</p>
 						</form>
-						<p style="font-size: 60%"><a href="doctor_login.html">Doctor Login</a></p>
+						<p style="font-size: 60%"><a href="login.html">Patient Login</a></p>
           </div>
         </div>
       </div>

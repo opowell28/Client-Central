@@ -31,7 +31,7 @@ if ($stmt = $con->prepare('SELECT username, password FROM patient_accounts WHERE
 
 		$stmt->bind_param('sssss', $_POST['username'], $_POST['docname'], $_POST['adate'], $_POST['atime'], $_POST['symptoms']);
 		$stmt->execute();
-		header('Location: booking - success.php');
+		header('Location: doctor_booking - success.php');
 	} else {
 		// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
 		echo 'Could not prepare statement!';
