@@ -14,6 +14,7 @@ public class Appointment {
 	private String docId;
 	private String docName;
 	private String docSpecial;
+	private String appType;
 	private String status;
 	private String date;
 	private String slot;
@@ -22,7 +23,6 @@ public class Appointment {
 	private String phone;
 
 	private String name;
-	// Doctor ID	Doctor's Name	Specialization	Appointment Time	Appointment Date	Status
 	public String getEmail() {
 		return email;
 	}
@@ -90,7 +90,14 @@ public class Appointment {
 	public void setDocSpecial(String docSpecial) {
 		this.docSpecial = docSpecial;
 	}
+	public String getAppType() {
+		return appType;
+	}
+	public void setAppType(String appType) {
+		this.appType = appType;
+	}
 	public String getStatus() {
+
 		return status;
 	}
 	public void setStatus(String status) {

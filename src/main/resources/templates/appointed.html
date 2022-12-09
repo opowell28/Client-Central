@@ -42,9 +42,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr valign="top" th:each="app:${doctors}">
-			
-			<td valign="top" th:text="${docId}"type="text">Id</td>
+          <tr valign="top" th:each="app:${appointments}">
+
+			<td valign="top" th:text="${app.docId}"type="text">Id</td>
 			<td valign="top" th:text="${app.docName}">Name</td>
 			<td valign="top" th:text="${app.docSpecial}">Specialization</td>
 			<td valign="top" th:text="${app.date}">Name</td>

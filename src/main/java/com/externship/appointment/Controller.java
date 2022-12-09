@@ -132,17 +132,17 @@ public class Controller {
 	
 	@GetMapping("/patientList")
 	public ModelAndView PatientList(HttpSession session) {
-		
-	    List<Patient> patient = new ArrayList<Patient>(); //use patient repo to display all patients on doctor's account
+
+		List<Patient> patient = new ArrayList<Patient>();; //use patient repo to display all patients on doctor's account
 		patientRepo.findAll().forEach(patient::add);
 	    Map<String, Object> params = new HashMap<>();
-	    
+
 	    params.put("patient", patient);
 	    params.put("email", session.getAttribute("person")); //?
 	    
 	    return new ModelAndView("patientlist", params);
 	}
-	/* @GetMapping("/docdetails") //list doctors
+	/* @GetMapping("/doclist") //list doctors
 	public ModelAndView DocDetails(HttpSession session) {
 
 		List<Doctor> doctors = new ArrayList<Doctor>();

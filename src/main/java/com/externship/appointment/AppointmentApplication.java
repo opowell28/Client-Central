@@ -21,6 +21,7 @@ public class AppointmentApplication {
 	        .addResourceLocations("classpath:/static/")
 	        .setCachePeriod(0);
 	    }
+
 	}
 
 }

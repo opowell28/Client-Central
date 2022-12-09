@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Table(name="PATIENT")
 public class Patient {
 	@Id
+
 	private String email;
 	private String password;
 	private String DOB;

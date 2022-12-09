@@ -109,8 +109,14 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label>Doctor ID</label>
-                                  <input class="form-control" type="text" name="docID" id="docID" placeholder="Doctor ID">
+                                  <label>Appointment Type</label>
+                                  <select class="form-control" name="apptype" id="apptype" placeholder="Appointment type" >
+                                    <option value="Wellness Visit">Annual Preventative Wellness Visit</option>
+                                    <option value="Office Visit">Office Visit</option>
+                                    <option value="Follow Up Visit">Follow Up Visit</option>
+                                    <option value="Urgent Visit">Urgent Visit</option>
+                                    <option value="Blood Draw/Vacc">Blood Draw/Vaccination</option>
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -118,7 +124,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label>Appointment Date</label>
-                                  <input class="form-control" type="date" name="Appointment Date" id="date" placeholder="Appointment Date"/>
+                                  <input class="form-control" type="date" name="date" id="date" placeholder="Appointment Date"/>
                                 </div>
                               </div>
                               <div class="col">

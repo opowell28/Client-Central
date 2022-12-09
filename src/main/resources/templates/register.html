@@ -4,7 +4,7 @@
 <head>
 	<title>Registration Page</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../static/login.css">
+	<link rel="stylesheet" type="text/css" th:href="@{login.css}">
 </head>
 <body class="my-login-page">
 	<section class="h-100">
@@ -38,6 +38,11 @@
 									<div class="invalid-feedback">
 										Your name is invalid
 									</div>
+									<div class="form-group">
+										<label for="email">Date of Birth</label>
+										<input id="DOB" type="date" class="form-control" name="DOB" required>
+										<div class="invalid-feedback">
+										</div>
 								</div>
 
 

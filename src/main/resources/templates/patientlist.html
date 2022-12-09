@@ -10,7 +10,7 @@
 </head>
 <body >
    <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,10 +19,10 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
            <li class="nav-item">
-          <a class="nav-link" th:href="@{/userDetails}"> <i class=" mr-1" aria-hidden="true"></i>Home</a>
+          <a class="nav-link" th:href="@{/appointedDoc}"> <i class=" mr-1" aria-hidden="true"></i>Home</a>
         </li>
            <li class="nav-item">
-          <a class="nav-link" th:href="@{/userDetails}"> <i class=" mr-1" aria-hidden="true"></i>Appointments</a>
+          <a class="nav-link" th:href="@{/patientlist}"> <i class=" mr-1" aria-hidden="true"></i>Appointments</a>
         </li>
             <li class="nav-item">
           <a class="nav-link" th:href="@{/}"> <i class=" mr-1" aria-hidden="true"></i>Logout</a>
@@ -40,14 +40,17 @@
 <form method="POST" th:action="@{/assignment}">
 <td valign="top" th:text="${patient.email}"type="text">Email</td>
 <td valign="top" th:text="${patient.name}">Name</td>
+    <td valign="top" th:text="${patient.DOB}">DOB</td>
 
-<td>
+    <td>
 
 	<input type="hidden" name="email" th:value="${email}">
 	
 	<input type="hidden" name="email" th:value="${patient.email}">
 	<input type="hidden" name="name" th:value="${patient.name}">
-	<input type="date" id="calender" name="date">
+        <input type="hidden" name="name" th:value="${patient.DOB}">
+
+        <input type="date" id="calender" name="date">
     <input type="time" id="slot" name="slot">
     <button type="submit" value="value" class="link-button">Book Appointment</button>
 </td>

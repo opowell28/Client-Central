@@ -1,34 +1,177 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Welcome!</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../static/login.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ClientCentral</title>
+	<link rel="icon"  th:href="@{/img/favicon.png}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+	<link rel="stylesheet" th:href="@{style.css}" />
 </head>
+<body>
 
-<body class="my-login-page">
-	<section class="h-100">
-		<div class="container h-100">
-			<div class="row justify-content-md-center h-100">
-				<div class="card-wrapper">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark-register fixed-top">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#"><img src="../static/img/logo light.png" height="80rem"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="nav navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a th:href="@{/patlog}" class="btn btn-primary">Patient</a>
+				</li>
+				<li class="nav-item">
+					<a th:href="@{/doclog}" class="btn btn-primary">Doctor</a>
+				</li>
 
-					<div class="card fat">
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!--- Background Video -->
+<div class="video-container">
+	<div class="container-fluid video-caption">
+		<div class="row justify-content-center">
+			<div class="col-md-8 justify-content-center main-heading-home" id="slide">
+				<h1 class="display-1">ClientCentral</h1>
+				<hr>
+			</div>
+		</div>
+	</div>
+	<video preload="" autoplay muted playsinline loop width="100%">
+		<source th:src="@{/img/Final.mp4}" type="video/mp4">
+	</video>
+</div>
+
+<div class="page-content-full">
+
+	<!--- Welcome Section -->
+	<div class="container-fluid padding">
+		<div class="row welcome text-center">
+			<div class="col-12">
+				<h1 class="display-4">About Us</h1>
+				<hr>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-xl-4 col-12">
+					<div class="card">
 						<div class="card-body">
-							<h4 class="card-title">Welcome to Central Client</h4>
-						</div>
-						<div>
-							<a th:href="@{/patlog}" class="btn btn-primary">Patient</a>
-							<a th:href="@{/doclog}" class="btn btn-primary">Doctor</a>
+							<h5 class="card-title display-4">Ease of Use</h5>
+							<p class="card-text">Client Central is utilized as a web application, making it easily accessible for most computers. It will significantly cut down on training time for office workers, as well as allow patients to schedule their own meetings, furthering progress towards solving labor shortages.</p>
 						</div>
 					</div>
-					<div class="footer">
-						Client Central -- Pennsylvania State University 2022
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title display-4">Consolidation</h5>
+							<p class="card-text">Client Central is utilized as a web application, making it easily accessible for most computers. It will significantly cut down on training time for office workers, as well as allow patients to schedule their own meetings, furthering progress towards solving labor shortages.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title display-4">Streamlined Communication</h5>
+							<p class="card-text">Client Central is utilized as a web application, making it easily accessible for most computers. It will significantly cut down on training time for office workers, as well as allow patients to schedule their own meetings, furthering progress towards solving labor shortages.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+
+	<!--- Cards -->
+	<div class="container-fluid padding">
+		<div class="row padding">
+			<div class="col-md-3 p-0">
+				<div class="card border-0">
+					<img class="card-img-top" th:src="@{/img/team1.png}">
+					<div class="card-body text-center">
+						<h4 class="card-title">Jordan Sharkey</h4>
+						<p class="card-text">Jordan is the blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+						<!--<a href="#" class="btn btn-outline-secondary">See Profile</a>-->
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 p-0">
+				<div class="card border-0">
+					<img class="card-img-top" th:src="@{/img/team2.png}">
+					<div class="card-body text-center">
+						<h4 class="card-title">Owen Powell</h4>
+						<p class="card-text">Owen is the blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 p-0">
+				<div class="card border-0">
+					<img class="card-img-top" th:src="@{/img/team3.png}">
+					<div class="card-body text-center">
+						<h4 class="card-title">Jennifer Lewis</h4>
+						<p class="card-text">Jennifer is the blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 p-0">
+				<div class="card border-0">
+					<img class="card-img-top" th:src="@{/img/team4.png}">
+					<div class="card-body text-center">
+						<h4 class="card-title">Andrew Kuziel</h4>
+						<p class="card-text">Andrew is the blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--- Fixed background -->
+	<figure>
+		<div class="fixed-wrap">
+			<div id="fixed">
+			</div>
+		</div>
+	</figure>
+
+	<!--- Footer -->
+	<footer>
+		<div class="container-fluid padding">
+			<div class="row text-center">
+				<div class="col-md-6">
+					<hr class="light">
+					<img th:src="@{/img/logo light.png}" height="40rem">
+					<hr class="light">
+					<p>Support: 555-555-5555</p>
+					<p>info@clientcentral.com</p>
+				</div>
+				<div class="col-md-6">
+					<hr class="light">
+					<h5>Service Area</h5>
+					<hr class="light">
+					<p>We serve all of doctors in the U.S.</p>
+				</div>
+				<div class="col-12">
+					<hr class="light-100">
+					<h5>&copy; clientcentral.com</h5>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div>
 
 </body>
 </html>
+
+
+
