@@ -43,6 +43,9 @@ if (!isset($_SESSION['loggedin'])) {
 					<a href="account.php" class="nav-link"></i>Account</a>
 				</li>
 				<li class="nav-item">
+					<a href="booking.php" class="nav-link"></i>Booking</a>
+				</li>
+				<li class="nav-item">
 					<a href="logout.php" class="nav-link">Logout <i class="fas fa-sign-out-alt"></i></a>
 				</li>
 			</ul>
