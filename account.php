@@ -105,16 +105,16 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
-							<td>Username:</td>
-							<td><?=$currentuser?></td>
+							<td style="width: 50%">Username:</td>
+							<td style="width: 50%"><?=$currentuser?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Password:</td>
-							<td>********</td>
+							<td style="width: 50%">Password:</td>
+							<td style="width: 50%">********</td>
 						</tr>
 						<tr class="table-primary">
-							<td>Email:</td>
-							<td><?=$email?></td>
+							<td style="width: 50%">Email:</td>
+							<td style="width: 50%"><?=$email?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -128,16 +128,16 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
-							<td>Date:</td>
-							<td><?=$date?></td>
+							<td style="width: 50%">Date:</td>
+							<td style="width: 50%"><?=$date?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Time:</td>
-							<td><?=$time?></td>
+							<td style="width: 50%">Time:</td>
+							<td style="width: 50%"><?=$time?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Symptoms:</td>
-							<td><?=$symptoms?></td>
+							<td style="width: 50%">Reason:</td>
+							<td style="width: 50%"><?=$symptoms?></td>
 						</tr>
 					</tbody>
 				</table>

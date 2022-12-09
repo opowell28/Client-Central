@@ -125,7 +125,7 @@ $stmt->close();
 						<div class="row">
 							<div class="col mb-3">
 								<div class="form-group">
-									<label>Symptoms</label>
+									<label>Reason</label>
 									<textarea class="form-control" rows="5" placeholder="Description your symptoms" name="symptoms" id="symptoms" required></textarea>
 								</div>
 							</div>

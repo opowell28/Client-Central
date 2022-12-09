@@ -23,30 +23,39 @@ $stmt->close();
 //Sets currentuser to the username of the account logged in.
 $currentuser = $_SESSION['name'];
 
-//Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current user.
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments)');
+//Gets the information corresponding to the highest appt_id (most recently created appt).
+$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name, $date, $time, $symptoms);
+$stmt->bind_result($name, $docname, $date, $time, $symptoms);
 $stmt->fetch();
 $stmt->close();
 
-//Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current user.
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-1 FROM appointments)');
+//Gets the information corresponding to the 2nd highest appt_id (most recently created appt).
+$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-1 FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name2, $date2, $time2, $symptoms2);
+$stmt->bind_result($name2, $docname2, $date2, $time2, $symptoms2);
 $stmt->fetch();
 $stmt->close();
 
-//Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current user.
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-2 FROM appointments)');
+//Gets the information corresponding to the 3rd highest appt_id (most recently created appt).
+$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-2 FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name3, $date3, $time3, $symptoms3);
+$stmt->bind_result($name3, $docname3, $date3, $time3, $symptoms3);
+$stmt->fetch();
+$stmt->close();
+
+//Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current doctor.
+$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE docname = "'.$currentuser.'")');
+//Executes above statement.
+$stmt->execute();
+//Sets the above retrieved values to the variables in the bind_result respectively.
+$stmt->bind_result($named, $dated, $timed, $symptomsd);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -123,16 +132,16 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
-							<td>Username:</td>
-							<td><?=$currentuser?></td>
+							<td style="width: 50%">Username:</td>
+							<td style="width: 50%"><?=$currentuser?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Password:</td>
-							<td>********</td>
+							<td style="width: 50%">Password:</td>
+							<td style="width: 50%">********</td>
 						</tr>
 						<tr class="table-primary">
-							<td>Email:</td>
-							<td><?=$email?></td>
+							<td style="width: 50%">Email:</td>
+							<td style="width: 50%"><?=$email?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -142,46 +151,55 @@ $stmt->close();
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
 			<div class="mx-auto">
+				<p>Your next appointment is shown below:</p>
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr class="table-primary">
+							<td style="width: 50%">User:</td>
+							<td style="width: 50%"><?=$named?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Date:</td>
+							<td style="width: 50%"><?=$dated?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Time:</td>
+							<td style="width: 50%"><?=$timed?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Reason:</td>
+							<td style="width: 50%"><?=$symptomsd?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row welcome text-center">
+    <div class="col-12 justify-content-center">
+			<div class="mx-auto">
 				<p>The next three appointments are shown below:</p>
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
-							<td>User:</td>
-							<td><?=$name?></td>
+							<td style="width: 50%">User:</td>
+							<td style="width: 50%"><?=$name?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Date:</td>
-							<td><?=$date?></td>
+							<td style="width: 50%">Doctor:</td>
+							<td style="width: 50%"><?=$docname?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Time:</td>
-							<td><?=$time?></td>
+							<td style="width: 50%">Date:</td>
+							<td style="width: 50%"><?=$date?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Symptoms:</td>
-							<td><?=$symptoms?></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="mx-auto">
-				<table class="table table-bordered table-hover">
-					<tbody>
-						<tr class="table-primary">
-							<td>User:</td>
-							<td><?=$name2?></td>
+							<td style="width: 50%">Time:</td>
+							<td style="width: 50%"><?=$time?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Date:</td>
-							<td><?=$date2?></td>
-						</tr>
-						<tr class="table-primary">
-							<td>Time:</td>
-							<td><?=$time2?></td>
-						</tr>
-						<tr class="table-primary">
-							<td>Symptoms:</td>
-							<td><?=$symptoms2?></td>
+							<td style="width: 50%">Reason:</td>
+							<td style="width: 50%"><?=$symptoms?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -190,20 +208,50 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
-							<td>User:</td>
-							<td><?=$name3?></td>
+							<td style="width: 50%">User:</td>
+							<td style="width: 50%"><?=$name2?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Date:</td>
-							<td><?=$date3?></td>
+							<td style="width: 50%">Doctor:</td>
+							<td style="width: 50%"><?=$docname2?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Time:</td>
-							<td><?=$time3?></td>
+							<td style="width: 50%">Date:</td>
+							<td style="width: 50%"><?=$date2?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Symptoms:</td>
-							<td><?=$symptoms3?></td>
+							<td style="width: 50%">Time:</td>
+							<td style="width: 50%"><?=$time2?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Reason:</td>
+							<td style="width: 50%"><?=$symptoms2?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mx-auto">
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr class="table-primary">
+							<td style="width: 50%">User:</td>
+							<td style="width: 50%"><?=$name3?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Doctor:</td>
+							<td style="width: 50%"><?=$docname3?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Date:</td>
+							<td style="width: 50%"><?=$date3?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Time:</td>
+							<td style="width: 50%"><?=$time3?></td>
+						</tr>
+						<tr class="table-primary">
+							<td style="width: 50%">Reason:</td>
+							<td style="width: 50%"><?=$symptoms3?></td>
 						</tr>
 					</tbody>
 				</table>

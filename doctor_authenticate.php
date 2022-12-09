@@ -35,14 +35,14 @@ if ($stmt = $con->prepare('SELECT doctor_id, password FROM doctor_accounts WHERE
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['username'];
 		$_SESSION['doctor_id'] = $id;
-		header('Location: home.php');
+		header('Location: doctor_home.php');
 	} else {
 		// Incorrect password
-		header('Location: login - failed.html');
+		header('Location: doctor_login - failed.html');
 	}
 } else {
 	// Incorrect username
-	header('Location: login - failed.html');
+	header('Location: doctor_login - failed.html');
 }
 
 
