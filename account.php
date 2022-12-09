@@ -19,6 +19,12 @@ $stmt->execute();
 $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
+
+$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = 1 ');
+$stmt->execute();
+$stmt->bind_result($name, $date, $time, $symptoms );
+$stmt->fetch();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -97,9 +103,8 @@ $stmt->close();
 							<td><?=$_SESSION['name']?></td>
 						</tr>
 						<tr class="table-primary">
-							<td>Password:</td>
+							<td>Password:EXAMPLE</td>
 							<td>********</td>
-							<!--<td><?=$password?></td>-->
 						</tr>
 						<tr class="table-primary">
 							<td>Email:</td>
@@ -110,8 +115,29 @@ $stmt->close();
 			</div>
     </div>
 	</div>
-</div>
-
+	<div class="row welcome text-center">
+    <div class="col-12 justify-content-center">
+			<div class="mx-auto">
+				<p>Your next appointment is below:</p>
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr class="table-primary">
+							<td>Date:</td>
+							<td><?=$date?></td>
+						</tr>
+						<tr class="table-primary">
+							<td>Time:</td>
+							<td><?=$time?></td>
+						</tr>
+						<tr class="table-primary">
+							<td>Symptoms:</td>
+							<td><?=$symptoms?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+    </div>
+	</div>
 </div>
 
 <!--- Footer -->
