@@ -20,7 +20,9 @@ $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
 
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = 1 ');
+$currentuser = $_SESSION['name'];
+
+$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE patient_username = "'.$currentuser.'")');
 $stmt->execute();
 $stmt->bind_result($name, $date, $time, $symptoms );
 $stmt->fetch();
@@ -100,7 +102,7 @@ $stmt->close();
 					<tbody>
 						<tr class="table-primary">
 							<td>Username:</td>
-							<td><?=$_SESSION['name']?></td>
+							<td><?=$currentuser?></td>
 						</tr>
 						<tr class="table-primary">
 							<td>Password:EXAMPLE</td>
