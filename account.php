@@ -20,11 +20,15 @@ $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
 
+//Sets currentuser to the username of the account logged in.
 $currentuser = $_SESSION['name'];
 
+//Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current user.
 $stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE patient_username = "'.$currentuser.'")');
+//Executes above statement.
 $stmt->execute();
-$stmt->bind_result($name, $date, $time, $symptoms );
+//Sets the above retrieved values to the variables in the bind_result respectively.
+$stmt->bind_result($name, $date, $time, $symptoms);
 $stmt->fetch();
 $stmt->close();
 ?>
