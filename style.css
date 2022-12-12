@@ -250,6 +250,10 @@ figure {
   .form-block {
     max-width: 720px;
   }
+  .video-container {
+    height: 80%;
+    position: relative;
+  }
 }
 @media (max-width: 992px) {
   .display-1 {
