@@ -1,5 +1,5 @@
 Start the Apache and MySQL Modules
-Navigate to localhost/dashboard
+Navigate to "localhost/dashboard"
 Click "phpMyAdmin"
 Create database, name it phplogin, select "utf8_general_ci"
 Click "Create"
