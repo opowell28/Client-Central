@@ -167,6 +167,7 @@ $stmt->close();
                 <input type="email" class="form-control" name="email" placeholder="Email" id="email" required>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
+							<p class="text-success" style="font-size: 60%">Doctor user created, they may login.</p>
             </form>
           </div>
         </div>

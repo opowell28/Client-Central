@@ -121,6 +121,13 @@ $stmt->close();
 			</div>
     </div>
 	</div>
+	<div class="row text-center">
+		<div class="col-12">
+			<a href="doctor_table.php"><button type="link" class="btn btn-primary">View Doctor Table</button></a>
+		</div>
+	</div>
+
+
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
 			<div class="mx-auto">
