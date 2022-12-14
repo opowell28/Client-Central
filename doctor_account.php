@@ -24,38 +24,38 @@ $stmt->close();
 $currentuser = $_SESSION['name'];
 
 //Gets the information corresponding to the highest appt_id (most recently created appt).
-$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments)');
+$stmt = $con->prepare('SELECT appt_id, patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name, $docname, $date, $time, $symptoms);
+$stmt->bind_result($appt_id, $name, $docname, $date, $time, $symptoms);
 $stmt->fetch();
 $stmt->close();
 
 //Gets the information corresponding to the 2nd highest appt_id (most recently created appt).
-$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-1 FROM appointments)');
+$stmt = $con->prepare('SELECT appt_id, patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-1 FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name2, $docname2, $date2, $time2, $symptoms2);
+$stmt->bind_result($appt_id2, $name2, $docname2, $date2, $time2, $symptoms2);
 $stmt->fetch();
 $stmt->close();
 
 //Gets the information corresponding to the 3rd highest appt_id (most recently created appt).
-$stmt = $con->prepare('SELECT patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-2 FROM appointments)');
+$stmt = $con->prepare('SELECT appt_id, patient_username, docname, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id)-2 FROM appointments)');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name3, $docname3, $date3, $time3, $symptoms3);
+$stmt->bind_result($appt_id3, $name3, $docname3, $date3, $time3, $symptoms3);
 $stmt->fetch();
 $stmt->close();
 
 //Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current doctor.
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE docname = "'.$currentuser.'")');
+$stmt = $con->prepare('SELECT appt_id, patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE docname = "'.$currentuser.'")');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($named, $dated, $timed, $symptomsd);
+$stmt->bind_result($appt_idd, $named, $dated, $timed, $symptomsd);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -186,6 +186,10 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
+							<td style="width: 50%">Appointment ID:</td>
+							<td style="width: 50%"><?=$appt_idd?></td>
+						</tr>
+						<tr class="table-primary">
 							<td style="width: 50%">User:</td>
 							<td style="width: 50%"><?=$named?></td>
 						</tr>
@@ -213,6 +217,10 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
+							<td style="width: 50%">Appointment ID:</td>
+							<td style="width: 50%"><?=$appt_id?></td>
+						</tr>
+						<tr class="table-primary">
 							<td style="width: 50%">User:</td>
 							<td style="width: 50%"><?=$name?></td>
 						</tr>
@@ -239,6 +247,10 @@ $stmt->close();
 				<table class="table table-bordered table-hover">
 					<tbody>
 						<tr class="table-primary">
+							<td style="width: 50%">Appointment ID:</td>
+							<td style="width: 50%"><?=$appt_id2?></td>
+						</tr>
+						<tr class="table-primary">
 							<td style="width: 50%">User:</td>
 							<td style="width: 50%"><?=$name2?></td>
 						</tr>
@@ -264,6 +276,10 @@ $stmt->close();
 			<div class="mx-auto">
 				<table class="table table-bordered table-hover">
 					<tbody>
+						<tr class="table-primary">
+							<td style="width: 50%">Appointment ID:</td>
+							<td style="width: 50%"><?=$appt_id3?></td>
+						</tr>
 						<tr class="table-primary">
 							<td style="width: 50%">User:</td>
 							<td style="width: 50%"><?=$name3?></td>

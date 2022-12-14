@@ -24,11 +24,11 @@ $stmt->close();
 $currentuser = $_SESSION['name'];
 
 //Gets the information corresponding to the highest appt_id (most recently created appt) associated with the current user.
-$stmt = $con->prepare('SELECT patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE patient_username = "'.$currentuser.'")');
+$stmt = $con->prepare('SELECT appt_id, patient_username, date, time, symptoms FROM appointments WHERE appt_id = (SELECT MAX(appt_id) FROM appointments WHERE patient_username = "'.$currentuser.'")');
 //Executes above statement.
 $stmt->execute();
 //Sets the above retrieved values to the variables in the bind_result respectively.
-$stmt->bind_result($name, $date, $time, $symptoms);
+$stmt->bind_result($appt_id, $name, $date, $time, $symptoms);
 $stmt->fetch();
 $stmt->close();
 ?>
@@ -134,6 +134,10 @@ $stmt->close();
 				<p>Your next appointment is below:</p>
 				<table class="table table-bordered table-hover">
 					<tbody>
+						<tr class="table-primary">
+							<td style="width: 50%">Appointment ID:</td>
+							<td style="width: 50%"><?=$appt_id?></td>
+						</tr>
 						<tr class="table-primary">
 							<td style="width: 50%">Date:</td>
 							<td style="width: 50%"><?=$date?></td>
