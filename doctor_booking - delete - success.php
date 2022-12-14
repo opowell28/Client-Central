@@ -13,16 +13,12 @@ $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$stmt = $con->prepare('SELECT password, email FROM patient_accounts WHERE patient_id = ?');
-$stmt->bind_param('i', $_SESSION['patient_id']);
+$stmt = $con->prepare('SELECT password, email FROM doctor_accounts WHERE doctor_id = ?');
+$stmt->bind_param('i', $_SESSION['doctor_id']);
 $stmt->execute();
 $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
-
-//Sets currentuser to the username of the account logged in.
-$currentuser = $_SESSION['name'];
-
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +26,7 @@ $currentuser = $_SESSION['name'];
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ClientCentral - Account</title>
+	<title>ClientCentral - Appointments</title>
 	<link rel="icon" type="image/png" href="img/favicon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,8 +55,8 @@ $currentuser = $_SESSION['name'];
 				<li class="nav-item">
 					<a href="doctor_account.php" class="nav-link"></i>Account</a>
 				</li>
-				<li class="nav-item">
-					<a href="doctor_booking.php" class="nav-link"></i>Booking</a>
+				<li class="nav-item active">
+					<a href="#" class="nav-link"></i>Booking</a>
 				</li>
 				<li class="nav-item">
 					<a href="logout.php" class="nav-link">Logout <i class="fas fa-sign-out-alt"></i></a>
@@ -91,50 +87,92 @@ $currentuser = $_SESSION['name'];
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
-      <h2>Patient Table</h2>
-			<div class="mx-auto">
-				<p class="text-muted">Here is a list of registered patients:</p>
+			<form action="doctor_book.php" method="post" class="form" >
+				<div class="row">
+					<div class="col">
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Username</label>
+									<input type="text" class="form-control" name="username" id="username" placeholder="Patient Username" required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Doctor Name</label>
+									<input type="text" class="form-control" name="docname" id="docname" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" >
+								</div>
+							</div>
+						</div>
 
-				<table class="table table-bordered table-hover">
-					<thead>
-						<td>Patient ID</td>
-						<td>Patient Username</td>
-						<td>Patient Email</td>
-					</thead>
-				<?php
-				$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-				if ($conn-> connect_error) {
-					exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-				}
-				$query = "SELECT patient_id, username, email FROM patient_accounts";
-				$result = $conn-> query($query);
-				if ($result-> num_rows > 0) {
-					while ($row = $result-> fetch_assoc()) {
-						echo '<tr class="table-primary">
-											<td>'.$row["patient_id"].'</td>
-											<td>'.$row["username"].'</td>
-											<td>'.$row["email"].'</td>
-									</tr>';
-					}
-					echo "</table>";
-				}else {
-					echo "0 results";
-				}
-				$conn-> close();
-				?>
-			</div>
-		</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Appointment Date</label>
+									<input class="form-control" type="text" name="adate" id="adate" placeholder="Appointment Date" required/>
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
+									<label>Appointment Time</label>
+									<input class="form-control" type="text" name="atime" id="atime" placeholder="Appointment Time" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col mb-3">
+								<div class="form-group">
+									<label>Reason</label>
+									<textarea class="form-control" rows="5" placeholder="Reason for appointment" name="symptoms" id="symptoms" required></textarea>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col d-flex justify-content-end">
+						<button class="btn btn-primary" value="value" type="submit">Book Appointment</button>
+					</div>
+				</div>
+			</form>
+    </div>
 	</div>
 </div>
 
-
-
+<!--- Welcome Section -->
+<div class="container-fluid padding">
+	<div class="row welcome text-center">
+    <div class="col-12 justify-content-center">
+			<form action="doctor_book_delete.php" method="post" class="form" >
+				<h2>Cancel Appointment</h2>
+				<div class="row">
+					<div class="col">
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Appointment ID</label>
+									<input class="form-control" type="text" name="appt_id" id="appt_id" placeholder="Appointment ID" required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col d-flex justify-content-end">
+						<button class="btn btn-primary" value="value" type="submit">Cancel Appointment</button>
+					</div>
+				</div>
+				<p class="text-warning" >Appointment Cancelled Successfully.</p>
+			</form>
+    </div>
+	</div>
 </div>
 
-
-
-</body>
-</html>
+</div>
 
 <!--- Footer -->
 <footer>

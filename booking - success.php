@@ -87,7 +87,8 @@ $stmt->close();
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
-			<form action="doctor_book.php" method="post" class="form" >
+			<form action="book.php" method="post" class="form" >
+				<h2>Book Appointment</h2>
 				<div class="row">
 					<div class="col">
 						<div class="row">
@@ -121,7 +122,6 @@ $stmt->close();
 								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col mb-3">
 								<div class="form-group">
@@ -130,7 +130,6 @@ $stmt->close();
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 				<div class="row">
@@ -138,7 +137,43 @@ $stmt->close();
 						<button class="btn btn-primary" value="value" type="submit">Book Appointment</button>
 					</div>
 				</div>
-				<p class="text-success" >Appointment Booked Successfully!</p>
+				<p class="text-success" >Appointment booked successfully!</p>
+			</form>
+    </div>
+	</div>
+</div>
+
+<!--- Welcome Section -->
+<div class="container-fluid padding">
+	<div class="row welcome text-center">
+    <div class="col-12 justify-content-center">
+			<form action="book_delete.php" method="post" class="form" >
+				<h2>Cancel Appointment</h2>
+				<div class="row">
+					<div class="col">
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Username</label>
+									<input type="text" class="form-control" name="username" id="username" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label>Appointment ID</label>
+									<input class="form-control" type="text" name="appt_id" id="appt_id" placeholder="Appointment ID" required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col d-flex justify-content-end">
+						<button class="btn btn-primary" value="value" type="submit">Cancel Appointment</button>
+					</div>
+				</div>
 			</form>
     </div>
 	</div>
