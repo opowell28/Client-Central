@@ -88,6 +88,7 @@ $stmt->close();
 	<div class="row welcome text-center">
     <div class="col-12 justify-content-center">
 			<form action="doctor_book.php" method="post" class="form" >
+				<h2>Book Appointment</h2>
 				<div class="row">
 					<div class="col">
 						<div class="row">

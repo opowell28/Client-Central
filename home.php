@@ -83,7 +83,7 @@ if (!isset($_SESSION['loggedin'])) {
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title display-4">Account</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p class="card-text">Your account page allows you to see your account information, view the list of registered doctors, and view your next appointment.</p>
 					</div>
 				</div>
 			</div>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['loggedin'])) {
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title display-4">Scheduling</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p class="card-text">Your booking page allows you to schedule yourself appointments and cancel them if necessary.</p>
 					</div>
 				</div>
 			</div>
