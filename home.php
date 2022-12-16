@@ -72,7 +72,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!--- Welcome Section -->
 <div class="container-fluid padding">
-	<div class="row welcome text-center">
+	<div class="row welcome text-center justify-content-center">
 		<div class="col-12">
       <h2 class="display-4">Home Page</h2>
       <p class="lead">Welcome back, <?=$_SESSION['name']?>!</p>
